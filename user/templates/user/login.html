@@ -1,0 +1,50 @@
+{% extends "layout/index.html" %}
+{% load static %}
+{% load tailwind_filters %}
+{% load crispy_forms_tags %}
+{% block body %}
+    <section class="bg-white">
+        <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
+            <aside class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
+                <img alt="Pattern"
+                     src="https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                     class="absolute inset-0 h-full w-full object-cover" />
+            </aside>
+            <main aria-label="Main"
+                  class="flex items-center justify-center px-8  sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6">
+                <div class="max-w-xl lg:max-w-3xl">
+                    <a class="block text-blue-600" href="/">
+                        <span class="sr-only">Home</span>
+                    </a>
+                    <h1 class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">Welcome to Service Repair</h1>
+                    <p class="mt-4 leading-relaxed text-gray-500 max-w-md text-justify">
+                        Experience hassle-free tech repairs with our expert assistance From smartphones to laptops, we're here to restore your devices to their optimal functionality!
+                    </p>
+                    {% if form.errors %}
+                        <div class="alert alert-error shadow-lg mt-4">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="stroke-current flex-shrink-0 h-6 w-6"
+                                     fill="none"
+                                     viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Invalid Credentails. Please check and retry</span>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <form method="post" class="mt-8 flex flex-col gap-6">
+                        {% csrf_token %}
+                        <div class="w-full max-w-md">{{ form.username|as_crispy_field }}</div>
+                        <div class="w-full max-w-md">{{ form.password|as_crispy_field }}</div>
+                        <button class="btn btn-primary w-full max-w-md">Login</button>
+                    </form>
+                    <div class="mt-4 text-sm text-gray-500">
+                        Don't have an account?
+                        <a href="{% url 'signup' %}" class="link link-primary">Create Account</a>.
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+{% endblock body %}

@@ -1,0 +1,25 @@
+{% extends "layout/dashboard.html" %}
+{% load static %}
+{% block body %}
+    <div class="max-w-5xl mx-auto">
+        <div class="p-4 border-b-2 border-bottm w-full mx-auto flex justify-between items-center flex">
+            <p class="text-xl">Welcome</p>
+            <a href="{% url 'service_request_create' %}" class="btn btn-primary">Service Request</a>
+        </div>
+        {% for service in object_list %}
+            <div class="card w-full bg-base-100 shadow hover:shadow-xl mt-10 border">
+                <div class="card-body">
+                    <h2 class="card-title flex justify-between">
+                        {{ service.title }}
+                        <div class="text-sm text-gray-400 ">{{ service.date }}</div>
+                    </h2>
+                    <p>{{ service.description }}</p>
+                    <div class="card-actions justify-end">
+                        <a href="{% url "service_request_detail" service.pk %}"
+                           class="btn btn-primary">View</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock body %}

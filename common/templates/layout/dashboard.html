@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-us" data-theme="winter">
+    <head>
+        <meta charset="utf8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta http-equiv="content-language" content="en-us">
+        <meta name="description"
+              content="This is a brief summary of the page's content.">
+        <meta name="keywords" content="example, keywords, meta, tags">
+        <meta name="description"
+              content="This is a brief summary of the page's content.">
+        <meta name="keywords" content="example, keywords, meta, tags">
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.5/dist/full.css"
+              rel="stylesheet"
+              type="text/css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Service Repair</title>
+    </head>
+    <body>
+        <div class=" h-screen">
+            {% include "layout/nav.html" %}
+            <div class="p-4 pb-14">
+                {% block body %}
+                {% endblock body %}
+            </div>
+        </div>
+        {% block custom-script %}
+        {% endblock custom-script %}
+    </body>
+</html>

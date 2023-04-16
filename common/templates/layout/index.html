@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="corporate">
+    <head>
+        <meta name="description"
+              content="This is a brief summary of the page's content.">
+        <meta name="keywords" content="example, keywords, meta, tags">
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+              rel="stylesheet" />
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+              rel="stylesheet" />
+        <!-- DasyUI -->
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.5/dist/full.css"
+              rel="stylesheet"
+              type="text/css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- custom css -->
+        <link rel="stylesheet" href={% static 'css/index.css' %} />
+        <!-- Custom CSS -->
+        {% block custom-css %}
+        {% endblock custom-css %}
+        <title>Service Repair</title>
+    </head>
+    <body class="body" data-theme="winter">
+        {% block body %}
+        {% endblock body %}
+        <script type="text/javascript" src={% static 'js/index.js' %}></script>
+        {% block custom-script %}
+        {% endblock custom-script %}
+    </body>
+</html>

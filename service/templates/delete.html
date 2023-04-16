@@ -1,0 +1,12 @@
+{% extends "layout/dashboard.html" %}
+{% load static %}
+{% load tailwind_filters %}
+{% load crispy_forms_tags %}
+{% block body %}
+    <form method="post" class="mt-10">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        {{ form|crispy }}
+        <input type="submit" value="Confirm">
+    </form>
+{% endblock body %}

@@ -1,0 +1,62 @@
+{% extends "layout/dashboard.html" %}
+{% load static %}
+{% block body %}
+    <div class="max-w-5xl mx-auto">
+        <div class="text-sm breadcrumbs col-span-3">
+            <ul>
+                <li>
+                    <a href="{% url 'service_request_list' %}">Service Request</a>
+                </li>
+                <li>
+                    <a>Detail</a>
+                </li>
+                <li>
+                    <a>{{ object.id }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class=" grid grid-cols-1 md:grid-cols-3 mt-4 gap-8 text-center">
+            <h1 class="text-2xl text-bold col-span-3 text-left text-black border-b-2 p-4">Service Request Info</h1>
+            <div class="flex flex-col gap-2">
+                <h1 class="text-lg">Title</h1>
+                <p class="text-gray-400">{{ object.title }}</p>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h1 class="text-lg">User</h1>
+                <p class="text-gray-400">{{ object.User.email }}</p>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h1 class="text-lg">User</h1>
+                <p class="text-gray-400">{{ object.User.email }}</p>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h1 class="text-lg">Date</h1>
+                <p class="text-gray-400">{{ object.date }}</p>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h1 class="text-lg">Service Type</h1>
+                <p class="text-gray-400">{{ object.repair_service.service_type }}</p>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h1 class="text-lg">Device Type</h1>
+                <p class="text-gray-400">{{ object.repair_service.device_type }}</p>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h1 class="text-lg">Status</h1>
+                <p class="text-gray-400">{{ object.get_status_display }}</p>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h1 class="text-lg">Staff</h1>
+                <p class="text-gray-400">{{ object.staff.email }}</p>
+            </div>
+            <div class="col-span-3 text-left text-black mt-10 space-y-4 ">
+                <h1 class="text-xl text-bold border-b-2 p-2">Description</h1>
+                <p>{{ object.description }}</p>
+            </div>
+            {% if object.status != "DT" %}
+                <a href="{% url 'service_request_delete' object.pk %}"
+                   class="btn btn-error w-full max-w-sm mx-auto col-span-3">Cancel Request</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock body %}

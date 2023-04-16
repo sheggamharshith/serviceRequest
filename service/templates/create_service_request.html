@@ -1,0 +1,25 @@
+{% extends "layout/dashboard.html" %}
+{% load static %}
+{% load tailwind_filters %}
+{% load crispy_forms_tags %}
+{% block body %}
+    <div class="max-w-5xl mx-auto">
+        <div class="text-sm breadcrumbs col-span-3">
+            <ul>
+                <li>
+                    <a href="{% url 'service_request_list' %}">Service Request</a>
+                </li>
+                <li>
+                    <a>Create</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="text-xl text-black border-b-2 pb-2 mb-8 mt-4">Create Service Request</div>
+        <form method="post" class="flex flex-col gap-6">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-primary mx-auto w-full max-w-xl" >Request Service</button>
+        </form>
+    </div>
+{% endblock body %}
